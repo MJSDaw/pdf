@@ -3,7 +3,6 @@
         private const EXTENSION = '.pdf';
     
         public function generaDoc() {
-            // Implementación con la librería alternativa (e.g., TCPDF)
             $pdf = new TCPDF();
             $pdf->AddPage();
             $pdf->SetFont($this->tipoLetra, '', $this->tamano);
@@ -11,20 +10,16 @@
             $pdf->Write(0, $this->contenido);
             return $pdf;
         }
-    
         public function almacenaDoc($ruta) {
             $pdf = $this->generaDoc();
             $pdf->Output($ruta . self::EXTENSION, 'F');
         }
-    
         public function devuelveDoc() {
             $pdf = $this->generaDoc();
             $pdf->Output('I');
         }
-    
         public function guardaEnDisco($ruta) {
             $this->almacenaDoc($ruta);
         }
     }
-    
 ?>
